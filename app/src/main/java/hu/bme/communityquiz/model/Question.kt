@@ -3,7 +3,6 @@ package hu.bme.communityquiz.model
 import io.swagger.annotations.ApiModel
 import com.google.gson.annotations.SerializedName
 import io.swagger.annotations.ApiModelProperty
-import hu.bme.communityquiz.model.Question
 import java.lang.StringBuilder
 import java.util.*
 
@@ -50,14 +49,14 @@ class Question {
     @get:ApiModelProperty(required = true, value = "")
     @SerializedName("wrongAnswer3")
     var wrongAnswer3: String? = null
-    override fun equals(o: Any?): Boolean {
-        if (this === o) {
+    override fun equals(other: Any?): Boolean {
+        if (this === other) {
             return true
         }
-        if (o == null || javaClass != o.javaClass) {
+        if (other == null || javaClass != other.javaClass) {
             return false
         }
-        val question = o as Question
+        val question = other as Question
         return id == question.id &&
                 category == question.category &&
                 this.question == question.question &&

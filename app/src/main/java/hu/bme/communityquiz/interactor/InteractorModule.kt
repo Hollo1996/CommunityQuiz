@@ -26,6 +26,6 @@ class InteractorModule {
 
     @Provides
     @Singleton
-    fun provideLogicInteractor() = LogicInteractor()
+    fun provideLogicInteractor(serverInteractor: ServerInteractor) = LogicInteractor(serverInteractor)
 
 }

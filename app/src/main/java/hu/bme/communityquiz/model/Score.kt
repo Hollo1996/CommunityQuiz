@@ -25,14 +25,14 @@ class Score {
     @get:ApiModelProperty(required = true, value = "")
     @SerializedName("point")
     var point: BigDecimal? = null
-    override fun equals(o: Any?): Boolean {
-        if (this === o) {
+    override fun equals(other: Any?): Boolean {
+        if (this === other) {
             return true
         }
-        if (o == null || javaClass != o.javaClass) {
+        if (other == null || javaClass != other.javaClass) {
             return false
         }
-        val score = o as Score
+        val score = other as Score
         return id == score.id &&
                 category == score.category &&
                 point == score.point

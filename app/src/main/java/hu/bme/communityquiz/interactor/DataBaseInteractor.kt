@@ -4,7 +4,7 @@ import hu.bme.communityquiz.model.Score
 
 class DataBaseInteractor {
     fun saveScore(value:Score){
-        TODO()
+        TODO("$value")
     }
     fun loadScores():List<Score>{
         TODO()

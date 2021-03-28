@@ -251,6 +251,7 @@ class ApiClient() {
  * when the deserialization fails due to JsonParseException and the
  * expected type is String, then just return the body string.
  */
+@Suppress("UNCHECKED_CAST")
 internal class GsonResponseBodyConverterToString<T>(
     private val gson: Gson,
     private val type: Type

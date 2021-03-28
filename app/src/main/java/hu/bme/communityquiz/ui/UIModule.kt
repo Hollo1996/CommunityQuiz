@@ -3,6 +3,9 @@ package hu.bme.communityquiz.ui
 import android.content.Context
 import dagger.Module
 import dagger.Provides
+import hu.bme.communityquiz.interactor.DataBaseInteractor
+import hu.bme.communityquiz.interactor.LogicInteractor
+import hu.bme.communityquiz.interactor.ServerInteractor
 import hu.bme.communityquiz.ui.answer_question.AnswerQuestionPresenter
 import hu.bme.communityquiz.ui.choose_category.ChooseCategoryPresenter
 import hu.bme.communityquiz.ui.choose_category.ChooseCategoryScreen
@@ -25,19 +28,21 @@ class UIModule(private val context: Context) {
 
     @Provides
     @Singleton
-    fun chooseCategoryPresenter() = ChooseCategoryPresenter()
+    fun chooseCategoryPresenter(logicInteractor: LogicInteractor,
+                                serverInteractor: ServerInteractor
+    ) = ChooseCategoryPresenter(logicInteractor,serverInteractor)
 
     @Provides
     @Singleton
-    fun scorePresenter() = ScorePresenter()
+    fun scorePresenter(dataBaseInteractor: DataBaseInteractor,serverInteractor: ServerInteractor) = ScorePresenter(dataBaseInteractor,serverInteractor)
 
     @Provides
     @Singleton
-    fun createQuestionPresenter() = CreateQuestionPresenter()
+    fun createQuestionPresenter(serverInteractor: ServerInteractor) = CreateQuestionPresenter(serverInteractor)
 
     @Provides
     @Singleton
-    fun answerQuestion() = AnswerQuestionPresenter()
+    fun answerQuestion(logicInteractor: LogicInteractor,dataBaseInteractor: DataBaseInteractor) = AnswerQuestionPresenter(logicInteractor,dataBaseInteractor)
 
     /*
     @Provides

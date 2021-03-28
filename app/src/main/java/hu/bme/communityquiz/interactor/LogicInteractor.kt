@@ -22,7 +22,7 @@ class LogicInteractor @Inject constructor(private val serverInteractor: ServerIn
         TODO()
     }
     fun chooseAnswer(index:Int){
-        TODO()
+        TODO("$index")
     }
     fun nextQuestion():Question{
         TODO()

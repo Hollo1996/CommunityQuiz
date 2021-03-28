@@ -67,7 +67,7 @@ class OAuth(client: OkHttpClient, requestBuilder: TokenRequestBuilder) : Interce
 
         // Build the request
         val rb = request.newBuilder()
-        val requestAccessToken: String = String(accessToken)
+        val requestAccessToken: String = accessToken ?: throw NullPointerException()
         oAuthRequest = try {
             OAuthBearerClientRequest(request.url().toString())
                 .setAccessToken(requestAccessToken)
