@@ -33,6 +33,11 @@ android {
     packagingOptions {
         exclude 'META-INF/DEPENDENCIES'
     }
+    lintOptions {
+
+        abortOnError false
+
+    }
 }
 
 ext {
