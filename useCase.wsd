@@ -1,0 +1,29 @@
+@startuml usecase
+:User: as User
+:Server: as Server
+(Load categories) as loadCategories
+(Create new quiz question) as createQuestion
+(save quiz question) as saveQuestion
+(load random quiz questions) as loadQuestionList
+(Answer quiz questions) as answerQuiz
+(Keep track of score) as trackScore
+(Check Local Score) as checkLocalScore
+
+User -up-> createQuestion
+Server -up-> saveQuestion
+User -right-> answerQuiz
+Server -down-> loadQuestionList
+Server -left-> loadCategories
+User -down-> checkLocalScore
+Server -down-> trackScore
+
+createQuestion .right.> saveQuestion : include
+createQuestion .right.> loadCategories : include
+
+answerQuiz .right.> loadCategories : include
+answerQuiz .right.> loadQuestionList : include
+answerQuiz .right.> trackScore : include
+
+checkLocalScore .down.> trackScore : include
+
+@enduml
