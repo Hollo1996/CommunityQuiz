@@ -8,8 +8,9 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:name=".CommunityQuizApplication"
         android:theme="@style/Theme.CommunityQuiz">
-        <activity android:name=".ui.answer_question.AnswerQuestionActivity"></activity>
+        <activity android:name=".ui.answer_question.AnswerQuestionActivity" />
         <activity android:name=".ui.create_question.CreateQuestionActivity" />
         <activity android:name=".ui.score.ScoreActivity" />
         <activity android:name=".ui.choose_category.ChooseCategoryActivity" />
