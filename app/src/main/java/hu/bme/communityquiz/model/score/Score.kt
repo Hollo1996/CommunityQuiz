@@ -1,30 +1,37 @@
-package hu.bme.communityquiz.model
+package hu.bme.communityquiz.model.score
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+import androidx.room.TypeConverters
 import com.google.gson.annotations.SerializedName
+import hu.bme.communityquiz.model.BigDecimalToIntConverter
 import io.swagger.annotations.ApiModel
 import io.swagger.annotations.ApiModelProperty
 import java.math.BigDecimal
 import java.util.*
 
+@Entity
 @ApiModel(description = "")
-class Score {
+class Score(
     /**
      */
+    @PrimaryKey
     @get:ApiModelProperty(required = true, value = "")
     @SerializedName("id")
-    var id: String? = null
+    var id: String = UUID.randomUUID().toString(),
 
     /**
      */
     @get:ApiModelProperty(required = true, value = "")
     @SerializedName("category")
-    var category: String? = null
+    var category: String? = null,
 
     /**
      */
     @get:ApiModelProperty(required = true, value = "")
     @SerializedName("point")
-    var point: BigDecimal? = null
+    var point: BigDecimal? = null,
+) {
     override fun equals(other: Any?): Boolean {
         if (this === other) {
             return true

@@ -28,21 +28,28 @@ class UIModule(private val context: Context) {
 
     @Provides
     @Singleton
-    fun chooseCategoryPresenter(logicInteractor: LogicInteractor,
-                                serverInteractor: ServerInteractor
-    ) = ChooseCategoryPresenter(logicInteractor,serverInteractor)
+    fun chooseCategoryPresenter(
+        logicInteractor: LogicInteractor,
+        serverInteractor: ServerInteractor
+    ) = ChooseCategoryPresenter(logicInteractor, serverInteractor)
 
     @Provides
     @Singleton
-    fun scorePresenter(dataBaseInteractor: DataBaseInteractor,serverInteractor: ServerInteractor) = ScorePresenter(dataBaseInteractor,serverInteractor)
+    fun scorePresenter(dataBaseInteractor: DataBaseInteractor, serverInteractor: ServerInteractor) =
+        ScorePresenter(dataBaseInteractor, serverInteractor)
 
     @Provides
     @Singleton
-    fun createQuestionPresenter(serverInteractor: ServerInteractor) = CreateQuestionPresenter(serverInteractor)
+    fun createQuestionPresenter(serverInteractor: ServerInteractor) =
+        CreateQuestionPresenter(serverInteractor)
 
     @Provides
     @Singleton
-    fun answerQuestion(logicInteractor: LogicInteractor,dataBaseInteractor: DataBaseInteractor) = AnswerQuestionPresenter(logicInteractor,dataBaseInteractor)
+    fun answerQuestion(
+        logicInteractor: LogicInteractor,
+        dataBaseInteractor: DataBaseInteractor,
+        serverInteractor: ServerInteractor
+    ) = AnswerQuestionPresenter(logicInteractor, dataBaseInteractor, serverInteractor)
 
     /*
     @Provides

@@ -10,6 +10,6 @@ class ScorePresenter @Inject constructor(
         private val dataBaseInteractor: DataBaseInteractor,
         private val serverInteractor: ServerInteractor
 ):Presenter<ScoreScreen>() {
-    fun loadScorePairs() = dataBaseInteractor.loadScores()
+    fun loadLocalScores() = dataBaseInteractor.loadScores()
     fun loadGlobalScores() = serverInteractor.listGlobalScores()
 }

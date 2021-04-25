@@ -1,3 +1,32 @@
 <resources>
     <string name="app_name">CommunityQuiz</string>
+    <string name="app_title">Community Quiz 1.0</string>
+    <string name="main_menu_title">Main Menu</string>
+    <string name="choose_category_title">Choose Category</string>
+    <string name="answer_question_title">Quiz</string>
+    <string name="create_question_title">Create Question</string>
+    <string name="score_title">Score</string>
+
+    <string name="blank"> </string>
+    <string name="start_button">Start</string>
+    <string name="create_button">Create</string>
+    <string name="score_button">Score</string>
+    <string name="choose_button">Choose</string>
+    <string name="next_button">Choose</string>
+    <string name="save_button">Choose</string>
+
+    <string name="category_placeholder">Category</string>
+    <string name="question_placeholder">Question</string>
+    <string name="correct_answer_placeholder">Correct Answer</string>
+    <string name="wrong_answer_1_placeholder">Wrong Answer 1</string>
+    <string name="wrong_answer_2_placeholder">Wrong Answer 2</string>
+    <string name="wrong_answer_3_placeholder">Wrong Answer 3</string>
+    <string name="global_score_header">Global</string>
+    <string name="local_score_header">Local</string>
+    <string name="category_header">Category</string>
+    <string-array name="spinner">
+        <item>One</item>
+        <item>Two</item>
+        <item>Three</item>
+    </string-array>
 </resources>

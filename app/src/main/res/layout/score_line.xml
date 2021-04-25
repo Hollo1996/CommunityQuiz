@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="64dp"
+    >
+
+
+    <TextView
+        android:id="@+id/categoryNameText"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:fontFamily="@font/roboto_bold"
+        android:gravity="center"
+        android:text="History"
+        android:textAlignment="viewEnd"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/localScoreText"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:fontFamily="@font/roboto_bold"
+        android:gravity="center"
+        android:text="10"
+        android:textAlignment="center"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/globalScoreText"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:fontFamily="@font/roboto_bold"
+        android:gravity="center"
+        android:text="100"
+        android:textAlignment="center"
+        android:textSize="24sp" />
+
+</LinearLayout>

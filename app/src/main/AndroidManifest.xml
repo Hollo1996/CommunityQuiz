@@ -2,25 +2,40 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="hu.bme.communityquiz">
 
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
+        android:name=".CommunityQuizApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:name=".CommunityQuizApplication"
-        android:theme="@style/Theme.CommunityQuiz">
-        <activity android:name=".ui.answer_question.AnswerQuestionActivity" />
-        <activity android:name=".ui.create_question.CreateQuestionActivity" />
-        <activity android:name=".ui.score.ScoreActivity" />
-        <activity android:name=".ui.choose_category.ChooseCategoryActivity" />
-        <activity android:name=".ui.main.MainActivity">
+        android:theme="@style/Theme.CommunityQuiz.NoActionBar">
+        <activity
+            android:name=".ui.answer_question.AnswerQuestionActivity"
+            android:screenOrientation="sensorPortrait" />
+        <activity
+            android:name=".ui.create_question.CreateQuestionActivity"
+            android:screenOrientation="sensorPortrait" />
+        <activity
+            android:name=".ui.score.ScoreActivity"
+            android:screenOrientation="sensorPortrait" />
+        <activity
+            android:name=".ui.choose_category.ChooseCategoryActivity"
+            android:screenOrientation="sensorPortrait" />
+        <activity
+            android:name=".ui.main.MainActivity"
+            android:screenOrientation="sensorPortrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

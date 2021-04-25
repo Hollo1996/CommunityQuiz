@@ -1,0 +1,150 @@
+swagger: "2.0"
+info:
+  description: "This is the server for my community quiz game"
+  version: "1.0.0"
+  title: "Community Quiz"
+host: "localhost"
+basePath: "/communityQuiz"
+tags:
+- name: "quiz"
+  description: ""
+schemes:
+- "https"
+- "http"
+paths:
+  /category:
+    get:
+      tags:
+      - "quiz"
+      summary: "Get list of categories"
+      description: ""
+      operationId: "getCategories"
+      produces:
+      - "application/xml"
+      - "application/json"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            type: "array"
+            items: 
+              type: "string"
+  /question:
+    put:
+      tags:
+      - "quiz"
+      summary: "Save quiz question"
+      description: ""
+      operationId: "saveQuestion"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Updated user object"
+        required: true
+        schema:
+          $ref: "#/definitions/Question"
+      responses:
+        "200":
+          description: "successful operation"
+  /quiz/{category}:
+    get:
+      tags:
+      - "quiz"
+      summary: "Get list of random questions of category"
+      description: ""
+      operationId: "getQuiz"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "category"
+        in: "path"
+        description: ""
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            type: "array"
+            items: 
+              $ref: "#/definitions/Question"
+  /score:
+    get:
+      tags:
+      - "quiz"
+      summary: "List global scores"
+      description: ""
+      operationId: "listGlobalScores"
+      produces:
+      - "application/xml"
+      - "application/json"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            type: "array"
+            items: 
+              $ref: "#/definitions/Score"
+    put:
+      tags:
+      - "quiz"
+      summary: "Save score"
+      description: ""
+      operationId: "saveScore"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "body"
+        in: "body"
+        description: ""
+        required: true
+        schema:
+          $ref: "#/definitions/Score"
+      responses:
+        "200":
+          description: "successful operation"
+          
+definitions:
+  Question:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+      category: 
+        type: "string"
+      question: 
+        type: "string"
+      rightAnswer: 
+        type: "string"
+      wrongAnswer1: 
+        type: "string"
+      wrongAnswer2: 
+        type: "string"
+      wrongAnswer3: 
+        type: "string"
+    required:
+      - id
+      - category
+      - question
+      - rightAnswer
+      - wrongAnswer1
+      - wrongAnswer2
+      - wrongAnswer3
+  Score:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+      category: 
+        type: "string"
+      point: 
+        type: "number"
+    required:
+      - id
+      - category
+      - point

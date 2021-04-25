@@ -1,54 +1,64 @@
-package hu.bme.communityquiz.model
+package hu.bme.communityquiz.model.question
 
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import io.swagger.annotations.ApiModel
 import com.google.gson.annotations.SerializedName
 import io.swagger.annotations.ApiModelProperty
 import java.lang.StringBuilder
 import java.util.*
 
+@Entity
 @ApiModel(description = "")
-class Question {
+data class Question(
     /**
      */
+    @PrimaryKey
     @get:ApiModelProperty(required = true, value = "")
     @SerializedName("id")
-    var id: String? = null
+    var id: String = UUID.randomUUID().toString(),
 
     /**
      */
     @get:ApiModelProperty(required = true, value = "")
     @SerializedName("category")
-    var category: String? = null
+    var category: String? = null,
 
     /**
      */
     @get:ApiModelProperty(required = true, value = "")
     @SerializedName("question")
-    var question: String? = null
+    var question: String? = null,
 
     /**
      */
     @get:ApiModelProperty(required = true, value = "")
     @SerializedName("rightAnswer")
-    var rightAnswer: String? = null
+    @ColumnInfo(name = "right_answer")
+    var rightAnswer: String? = null,
 
     /**
      */
     @get:ApiModelProperty(required = true, value = "")
     @SerializedName("wrongAnswer1")
-    var wrongAnswer1: String? = null
+    @ColumnInfo(name = "wrong_answer_1")
+    var wrongAnswer1: String? = null,
 
     /**
      */
     @get:ApiModelProperty(required = true, value = "")
     @SerializedName("wrongAnswer2")
-    var wrongAnswer2: String? = null
+    @ColumnInfo(name = "wrong_answer_2")
+    var wrongAnswer2: String? = null,
 
     /**
      */
     @get:ApiModelProperty(required = true, value = "")
     @SerializedName("wrongAnswer3")
-    var wrongAnswer3: String? = null
+    @ColumnInfo(name = "wrong_answer_3")
+    var wrongAnswer3: String? = null,
+) {
     override fun equals(other: Any?): Boolean {
         if (this === other) {
             return true

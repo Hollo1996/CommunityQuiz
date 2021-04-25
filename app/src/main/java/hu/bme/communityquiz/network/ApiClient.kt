@@ -84,7 +84,7 @@ class ApiClient() {
             .setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ")
             .create()
         okClient = OkHttpClient()
-        var baseUrl = "https://localhost/communityQuiz"
+        var baseUrl = "http://192.168.1.67:8080"
         if (!baseUrl.endsWith("/")) baseUrl = "$baseUrl/"
         adapterBuilder = Retrofit.Builder()
             .baseUrl(baseUrl)
