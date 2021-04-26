@@ -25,10 +25,12 @@ class MainTest {
         mainScreen = mock()
         mainPresenter.attachScreen(mainScreen)
     }
+
     @Test
-    fun testSearch() {
-        val artist = "AC/DC"
+    fun testExistence() {
+        assert(true)
     }
+
     @After
     fun tearDown() {
         mainPresenter.detachScreen()

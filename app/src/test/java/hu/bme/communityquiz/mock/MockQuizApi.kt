@@ -17,7 +17,7 @@ class MockQuizApi : QuizApi {
         return object : Call<List<String?>?> {
             @Throws(IOException::class)
             override fun execute(): Response<List<String?>?> {
-                return Response.success<List<String?>?>(listOf("history"))
+                return Response.success<List<String?>?>(listOf("base"))
             }
 
             override fun enqueue(callback: Callback<List<String?>?>) {
@@ -42,7 +42,33 @@ class MockQuizApi : QuizApi {
         }
     }
 
-    val questions = mutableListOf<Question>()
+    val questions = mutableListOf<Question>(
+        Question(
+            category = "base",
+            question = "2 + 2",
+            rightAnswer = "4",
+            wrongAnswer1 = "5",
+            wrongAnswer2 = "3",
+            wrongAnswer3 = "6"
+        ),
+        Question(
+            category = "base",
+            question = "2 * 2",
+            rightAnswer = "4",
+            wrongAnswer1 = "5",
+            wrongAnswer2 = "3",
+            wrongAnswer3 = "6"
+        ),
+        Question(
+            category = "base",
+            question = "2 / 2",
+            rightAnswer = "1",
+            wrongAnswer1 = "4",
+            wrongAnswer2 = "3",
+            wrongAnswer3 = "2"
+        ),
+    )
+
     override fun saveQuestion(body: Question?): Call<Void?>? {
         if (body != null) {
             questions.add(body)
@@ -71,7 +97,11 @@ class MockQuizApi : QuizApi {
                 override fun clone(): Call<List<Question?>?> = this
 
                 override fun execute(): Response<List<Question?>?> {
-                    return Response.success<List<Question?>?>(questions.filter { it.category?.compareTo(category) == 0 })
+                    return Response.success<List<Question?>?>(questions.filter {
+                        it.category?.compareTo(
+                            category
+                        ) == 0
+                    })
                 }
 
                 override fun enqueue(callback: Callback<List<Question?>?>?) {}
@@ -86,7 +116,7 @@ class MockQuizApi : QuizApi {
             return null
     }
 
-    val scores = mutableListOf(Score(category = "base",point = BigDecimal(0)))
+    val scores = mutableListOf(Score(category = "base", point = BigDecimal(0)))
     override fun listGlobalScores(): Call<List<Score?>?> {
         return object : Call<List<Score?>?> {
             override fun clone(): Call<List<Score?>?> = this
@@ -107,7 +137,7 @@ class MockQuizApi : QuizApi {
 
     override fun saveScore(body: Score?): Call<Void?>? {
         if (body != null) {
-            if(body.point?.toInt() ?: -1 > scores.find { it.point?.toInt() == body.point?.toInt() }?.point?.toInt() ?: -1){
+            if (body.point?.toInt() ?: -1 > scores.find { it.point?.toInt() == body.point?.toInt() }?.point?.toInt() ?: -1) {
                 scores.add(body)
             }
             return object : Call<Void?> {

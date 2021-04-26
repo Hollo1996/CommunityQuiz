@@ -33,5 +33,5 @@ class AnswerQuestionPresenter @Inject constructor(
     fun saveScore(score: Score) = thread {
         dataBaseInteractor.saveScore(score)
         serverInteractor.saveScore(score)
-    }
+    }.join()
 }
