@@ -8,7 +8,6 @@ import org.apache.oltu.oauth2.client.HttpClient
 import org.apache.oltu.oauth2.client.request.OAuthClientRequest
 import org.apache.oltu.oauth2.client.response.OAuthClientResponse
 import org.apache.oltu.oauth2.client.response.OAuthClientResponseFactory
-import org.apache.oltu.oauth2.common.exception.OAuthProblemException
 import org.apache.oltu.oauth2.common.exception.OAuthSystemException
 import java.io.IOException
 
@@ -23,7 +22,6 @@ class OAuthOkHttpClient : HttpClient {
         this.client = client
     }
 
-    @Throws(OAuthSystemException::class, OAuthProblemException::class)
     override fun <T : OAuthClientResponse?> execute(
         request: OAuthClientRequest,
         headers: Map<String, String>,
@@ -41,11 +39,11 @@ class OAuthOkHttpClient : HttpClient {
         }
         val body = if (request.body != null) RequestBody.create(mediaType, request.body) else null
         requestBuilder.method(requestMethod, body)
-        return try {
+        try {
             val response = client.newCall(requestBuilder.build()).execute()
-            OAuthClientResponseFactory.createCustomResponse(
-                response.body().string(),
-                response.body().contentType().toString(),
+            return OAuthClientResponseFactory.createCustomResponse(
+                response.body()?.string(),
+                response.body()?.contentType().toString(),
                 response.code(),
                 responseClass
             )
